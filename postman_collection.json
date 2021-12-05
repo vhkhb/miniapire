@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "e5db0ee8-d248-4462-93f8-54fb140b422b",
+		"name": "Mini Aspire",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "demouser@example.com",
+							"description": "Please insert here login email id",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "Please insert here login password",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST_NAME}}/api/login",
+					"host": [
+						"{{HOST_NAME}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Sample user",
+							"description": "Please insert here registration name",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sample@example.com",
+							"description": "Please insert here registration email",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "Please insert here registration password",
+							"type": "text"
+						},
+						{
+							"key": "confirm_password",
+							"value": "password",
+							"description": "Please insert here registration confirm password",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST_NAME}}/api/register",
+					"host": [
+						"{{HOST_NAME}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Loan Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "amount",
+							"value": "10000",
+							"description": "Please insert here Loan Amount",
+							"type": "text"
+						},
+						{
+							"key": "term",
+							"value": "10",
+							"description": "Please insert here Loan Term",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST_NAME}}/api/loan",
+					"host": [
+						"{{HOST_NAME}}"
+					],
+					"path": [
+						"api",
+						"loan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loan Repayment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loan_id",
+							"value": "{{LOAN_ID}}",
+							"description": "Please set this variable in your postman local or global variable and set there value of Loan Id which you got it from the response of New Loan Request",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1000",
+							"description": "Please insert here Loan Amount make sure validation is here so insert the value of Actually EMI amount which is (Amount / Term) = EMI.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST_NAME}}/api/repayment",
+					"host": [
+						"{{HOST_NAME}}"
+					],
+					"path": [
+						"api",
+						"repayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loan Status Change",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loan_id",
+							"value": "{{LOAN_ID}}",
+							"description": "Please set this variable in your postman local or global variable and set there value of Loan Id which you got it from the response of New Loan Request",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"description": "Please insert here Field's value like 'active','inactive','pending'",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST_NAME}}/api/loan-status",
+					"host": [
+						"{{HOST_NAME}}"
+					],
+					"path": [
+						"api",
+						"loan-status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
